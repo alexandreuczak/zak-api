@@ -12,8 +12,12 @@ import io.swagger.annotations.ApiOperation;
 public interface GreetingApi {
 
 	@ApiOperation("Create a new greeting")
-	ResponseEntity<Greeting> hello(String message);
+	ResponseEntity<Greeting> inserir(String message);
 
+	@ApiOperation("Get a specific greeting")
+	ResponseEntity<Greeting> buscar(Long id);
+
+	
 	@ApiOperation("List all greetings")
 	ResponseEntity<List<Greeting>> listar();
 
