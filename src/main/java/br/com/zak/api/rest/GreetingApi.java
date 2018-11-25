@@ -8,7 +8,7 @@ import br.com.zak.api.domain.Greeting;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api("Zak API Rest")
+@Api("Greeting API Rest")
 public interface GreetingApi {
 
 	@ApiOperation("Create a new greeting")

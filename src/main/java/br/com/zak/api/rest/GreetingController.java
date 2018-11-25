@@ -1,7 +1,6 @@
 package br.com.zak.api.rest;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +33,7 @@ public class GreetingController implements GreetingApi {
 	}
 
 	@Override
-	@GetMapping(produces = "application/json", path="/{id}")
+	@GetMapping(produces = "application/json", path = "/{id}")
 	public ResponseEntity<Greeting> buscar(@PathVariable("id") Long id) {
 		Greeting greeting = repository.findById(id).orElse(null);
 		return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
