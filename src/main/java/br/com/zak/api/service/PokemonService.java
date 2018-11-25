@@ -24,7 +24,6 @@ public class PokemonService {
 	        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
 	        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 		
-//		return restTemplate.getForObject(POKEMON_URI, PokemonResponse.class);
 		return restTemplate
 				.exchange(POKEMON_URI, HttpMethod.GET , entity,PokemonResponse.class)
 				.getBody();
