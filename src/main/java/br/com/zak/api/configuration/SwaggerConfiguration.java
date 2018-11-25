@@ -32,11 +32,11 @@ public class SwaggerConfiguration {
 	private ApiInfo metaInfo() {
 
         ApiInfo apiInfo = new ApiInfo(
-                "Zak API REST",
+                "Zak API",
                 "API REST para Estudos",
                 "1.0",
                 "Terms of Service",
-                new Contact("Alexandre Uczak", "https://www.youtube.com/",
+                new Contact("Alexandre Uczak", "http://www.google.com/",
                         "alexandre.uczak@gmail.com"),
                 "Apache License Version 2.0",
                 "https://www.apache.org/licesen.html", new ArrayList<VendorExtension>()

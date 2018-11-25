@@ -14,18 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.zak.api.domain.Greeting;
 import br.com.zak.api.repository.GrettingRepository;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
-@Api("Zak API Rest")
 @RestController
 @RequestMapping("/greeting")
-public class GreetingController {
+public class GreetingController implements GreetingApi {
 
 	@Autowired
 	private GrettingRepository repository;
 	
-	@ApiOperation("Create a new greeting")
+	@Override
 	@PostMapping(produces = "application/json")
 	public ResponseEntity<Greeting> hello(@RequestParam("message") String message){
 		Greeting greeting = Greeting.builder().message(message).build();
@@ -35,14 +32,14 @@ public class GreetingController {
 		return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);		
 	}
 
-	@ApiOperation("List all greetings")
+	@Override
 	@GetMapping(produces = "application/json")
 	public ResponseEntity<List<Greeting>> listar(){
 		List<Greeting> greetings = repository.findAll();
 		return new ResponseEntity<List<Greeting>>(greetings, HttpStatus.OK);
 	}
 	
-	@ApiOperation("Remove a greeting")
+	@Override
 	@DeleteMapping
 	public ResponseEntity<Void> remover(@RequestParam("id") Long id){
 		repository.deleteById(id);
