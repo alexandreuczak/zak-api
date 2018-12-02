@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.zak.api.domain.Greeting;
 import br.com.zak.api.repository.GrettingRepository;
+import br.com.zak.api.rest.validator.GreetingValidator;
 
 @RestController
 @RequestMapping("/greeting")
@@ -21,6 +22,9 @@ public class GreetingController implements GreetingApi {
 
 	@Autowired
 	private GrettingRepository repository;
+	
+	@Autowired
+	private GreetingValidator validator;
 	
 	@Override
 	@PostMapping(produces = "application/json", path = "/{message}")
@@ -36,6 +40,9 @@ public class GreetingController implements GreetingApi {
 	@GetMapping(produces = "application/json", path = "/{id}")
 	public ResponseEntity<Greeting> buscar(@PathVariable("id") Long id) {
 		Greeting greeting = repository.findById(id).orElse(null);
+		
+		validator.valid(greeting);
+		
 		return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
 	}
 	
