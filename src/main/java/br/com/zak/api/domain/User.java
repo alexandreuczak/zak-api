@@ -1,5 +1,7 @@
 package br.com.zak.api.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,9 @@ import lombok.Setter;
 @Table(name = "user")
 @Getter
 @Setter
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")
